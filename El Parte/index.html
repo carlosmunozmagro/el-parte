@@ -322,21 +322,35 @@ const YOUTUBE_CHANNELS = [
 
 /* Claude Cowork rewrites this every morning from your calendar + notes */
 const TODAY = {
-  date: "2026-06-14",
-  firstMeeting: "Todo el día – Cumple Javier",
-  meetings: 2,
-  priorities: ["Felicitar a Javier por su cumpleaños", "Revisar cartera y preparar semana", "Descanso y planificación semanal"],
+  date: "",            // ISO, e.g. "2026-06-12" — card hides if empty
+  firstMeeting: "",    // e.g. "9:30 — Comité de inversión"
+  meetings: 0,         // total events today
+  priorities: [],      // up to 3 strings, e.g. ["Cerrar informe Q2", ...]
 };
 
 /* Claude Cowork rewrites this object every morning */
 const BRIEF = {
-  date: "",          // e.g. "viernes 12 junio 2026"
+  date: "domingo 14 junio 2026",
   youtube: [
-    // {channel:"Arte de Invertir", title:"Vídeo...", url:"https://...",
-    //  tickers:["NVDA","CCJ"], summary:"Recomendó... destacó..."}
+    {channel:"El Arte de Invertir", title:"💥ES AHORA ó NUNCA… [ÚLTIMA gran OPORTUNIDAD para HACERSE RICO en Décadas]", url:"https://www.youtube.com/watch?v=LupQM4bGcI0",
+     tickers:[], summary:"El canal analiza cómo identificar acciones capaces de multiplicarse por 10x, 20x o 50x, explicando qué características comparten y cómo encontrarlas con ejemplos reales de cartera. El fondo True Value Investments mantiene posiciones en algunas de las acciones presentadas en el vídeo."},
+    {channel:"Andrei Jikh", title:"The AI Boom Has One Massive Problem", url:"https://www.youtube.com/watch?v=rLqSgUKFXvY",
+     tickers:[], summary:"En este Short de 1:47, Jikh señala el principal problema que frena el boom de la IA —probablemente la demanda energética o la concentración en pocas compañías— sin desarrollar análisis de valores concretos. Vídeo sin descripción disponible al tratarse de un Short sin texto adjunto."},
+    {channel:"Andrei Jikh", title:"The Biggest IPO Bubble in History", url:"https://www.youtube.com/watch?v=TDR084lXY1Q",
+     tickers:[], summary:"En este Short de 1:15, Jikh advierte de que la oleada actual de OPVs constituye la mayor burbuja de salidas a bolsa de la historia, en un contexto marcado por el debut de SpaceX. Alerta del riesgo de comprar IPOs a valoraciones extremas sin análisis fundamental sólido."},
+    {channel:"Juan Ramón Rallo", title:"¿Por qué Bután ha comenzado a liquidar masivamente su tesoro de Bitcoin?", url:"https://www.youtube.com/watch?v=XRGbOtKOtgk",
+     tickers:["BTC"], summary:"Rallo analiza por qué Bután, que venía minando Bitcoin desde 2019 con energía hidroeléctrica casi gratuita, ha comenzado a vender masivamente sus reservas de BTC. Examina qué señal envía esta liquidación soberana sobre la sostenibilidad de las estrategias nacionales de acumulación de criptomonedas."},
+    {channel:"Juan Ramón Rallo", title:"Value investing versus la era de la inteligencia artificial con Gonzalo Recarte", url:"https://www.youtube.com/watch?v=_P0xSlJ7CLM",
+     tickers:[], summary:"Rallo debate con Gonzalo Recarte si el value investing tiene futuro en la era de la IA, donde las empresas de alto crecimiento desafían los criterios clásicos de valoración por múltiplos. Analizan cómo la inteligencia artificial redefine qué es una empresa 'barata' y qué oportunidades persisten para los inversores en valor."},
+    {channel:"Juan Ramón Rallo", title:"Trump prohíbe Fable 'la IA más avanzada del mundo' a todos los extranjeros", url:"https://www.youtube.com/watch?v=Ppg5BzQuMfc",
+     tickers:[], summary:"El gobierno de Trump ha vetado el acceso al modelo más avanzado de Anthropic a todos los no estadounidenses, incluyendo trabajadores extranjeros en suelo americano. Rallo analiza las implicaciones geopolíticas y económicas de esta restricción para la competencia global en inteligencia artificial."},
   ],
   headlines: [
-    // "Titular 1 — fuente", "Titular 2 — fuente"
+    "El oro pierde un 25% desde máximos con la caída más rápida desde 2008 — El Economista",
+    "Anthropic suspende el acceso a su modelo más avanzado por seguridad nacional — El Economista",
+    "Wall Street sube impulsado por el debut de SpaceX y las esperanzas de paz EEUU-Irán — El Economista",
+    "Los seis sectores donde rotar capital saliendo de semiconductores — El Economista",
+    "El brent cae más de un 3% y el petróleo de Texas queda por debajo de 85 dólares — El Economista",
   ],
 };
 
