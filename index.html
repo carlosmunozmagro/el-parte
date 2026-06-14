@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEF1F4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1116">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADT0lEQVR42u3dwXETQRCG0fYkwMUBOAISIBMCJBMCIgNuPtmCAnu3/+73RaCafiXtStqZp+eXryW91bEEgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAT08/sviwDHuzL4gOPRewYfcDz6NOEDjkcO+DhkuD6F4x9nv9nHIYMPOP5r3jt9HDL4gOMDZrzNxyGDDzg+bK57fBwy+FiN4zNmucHHIYOPpTg+e36zfRwy+FiH48qZTfVxyOBjEY675jTPxyGDjxU4Osxmko9DBh/DcXSbxwwfhww+xuLoPIN0H4cMPgbiSFn3XB+HDK92FI7PW+tvP77wEYzjs2XwkYrjmvcMPvJwXPlpwkcSjuuvM/g4ZLg+DcZx773JZh+HDD4icfT5PmOnj0MGH2E4en4Hus3HIYOPGBz9fzfZ4+OQwUcAjqzfWjf4OGTw0RpHoowNPg4ZfDTFkS5jto9DBh/tcEySMdXHIYOPRjimypjn41g+9Ht9rEz1MexN8bYL0nk+5n1c3nkrO8nHyAupm78Em+Fj6iX2/V+fp/sYfPPV4oe3XB+zb8u7/GSf6GO2jGr1Z58sH+NlVLe/Cab42CCjGv7BuL+PJTKq56MJnX3skVFtH2rq6WOVjOr8OGQ3H9tkVPMHqfv4WCij+m/B0MHHThkVsXnLvT7WyqiUbZ/u8rFZRgVtGHe9j+UyKmurySt9kFFxm9Re44OMSBwX+CDjtafnl68VWNw+4nEyKvdIjay1TpRR0YfxpKx4qIxKP8ar/7rnyqgBBwB2Xv1oGTXj6NCeM0iXUWMOHe42iQEyatJx5X3mMUPGKBw1fQsGOLJnM0nGQBw1cdsnOLLnNE/GWBw1ZatJOLJnNlXGcByVvL01HNk+ZstYgaPSjtSAI9vHBhmLcFTCMV5wZPvYI2Mdjup6dCgc2T62yViKozodVw5Hto+dMlbj+Mupr5WxHccfZ79ZBhyPBCyXAce7DsiA420NZMDxtg8yXkt9yl7eOQSH4BAcgkNwCA4JDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA7BITgkOASH4BAcgkNwCA7BITg0vt9WiMK7Q3mBBwAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADT0lEQVR42u3dwXETQRCG0fYkwMUBOAISIBMCJBMCIgNuPtmCAnu3/+73RaCafiXtStqZp+eXryW91bEEgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAT08/sviwDHuzL4gOPRewYfcDz6NOEDjkcO+DhkuD6F4x9nv9nHIYMPOP5r3jt9HDL4gOMDZrzNxyGDDzg+bK57fBwy+FiN4zNmucHHIYOPpTg+e36zfRwy+FiH48qZTfVxyOBjEY675jTPxyGDjxU4Osxmko9DBh/DcXSbxwwfhww+xuLoPIN0H4cMPgbiSFn3XB+HDK92FI7PW+tvP77wEYzjs2XwkYrjmvcMPvJwXPlpwkcSjuuvM/g4ZLg+DcZx773JZh+HDD4icfT5PmOnj0MGH2E4en4Hus3HIYOPGBz9fzfZ4+OQwUcAjqzfWjf4OGTw0RpHoowNPg4ZfDTFkS5jto9DBh/tcEySMdXHIYOPRjimypjn41g+9Ht9rEz1MexN8bYL0nk+5n1c3nkrO8nHyAupm78Em+Fj6iX2/V+fp/sYfPPV4oe3XB+zb8u7/GSf6GO2jGr1Z58sH+NlVLe/Cab42CCjGv7BuL+PJTKq56MJnX3skVFtH2rq6WOVjOr8OGQ3H9tkVPMHqfv4WCij+m/B0MHHThkVsXnLvT7WyqiUbZ/u8rFZRgVtGHe9j+UyKmurySt9kFFxm9Re44OMSBwX+CDjtafnl68VWNw+4nEyKvdIjay1TpRR0YfxpKx4qIxKP8ar/7rnyqgBBwB2Xv1oGTXj6NCeM0iXUWMOHe42iQEyatJx5X3mMUPGKBw1fQsGOLJnM0nGQBw1cdsnOLLnNE/GWBw1ZatJOLJnNlXGcByVvL01HNk+ZstYgaPSjtSAI9vHBhmLcFTCMV5wZPvYI2Mdjup6dCgc2T62yViKozodVw5Hto+dMlbj+Mupr5WxHccfZ79ZBhyPBCyXAce7DsiA420NZMDxtg8yXkt9yl7eOQSH4BAcgkNwCA4JDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA7BITgkOASH4BAcgkNwCA7BITg0vt9WiMK7Q3mBBwAAAABJRU5ErkJggg==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="El Parte">
+<link rel="manifest" href='data:application/manifest+json,{"name":"El Parte","short_name":"El Parte","display":"standalone","start_url":".","background_color":"%23EEF1F4","theme_color":"%23D97A1F"}'>
+<link rel="preconnect" href="https://finnhub.io">
+<link rel="preconnect" href="https://api.coingecko.com">
+<title>El Parte — Morning Markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF1F4; --ink:#14202E; --muted:#5B6B7A; --line:#D7DDE3;
+    --card:#FFFFFF; --sun:#D97A1F;
+    --up:#1E8A50; --down:#CD3D2E;
+    --bar:#DCE2E8; --nav:#FFFFFFEE;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0E1116; --ink:#ECEFF3; --muted:#8B97A3; --line:#262D36;
+      --card:#171C23; --sun:#E8923B;
+      --up:#30C463; --down:#FF5345;
+      --bar:#2A323C; --nav:#11151BEE;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif; font-size:15px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:calc(70px + env(safe-area-inset-bottom));
+  }
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  /* ---------- Compact header (one line) ---------- */
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 0 8px;border-bottom:1px solid var(--line);
+  }
+  .brand{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);font-weight:600}
+  .brand small{color:var(--muted);letter-spacing:.04em;margin-left:8px;text-transform:none;font-weight:400}
+  .clocks{display:flex;gap:10px;font-family:'Spline Sans Mono',monospace;font-size:10px;color:var(--muted)}
+  .clocks span{display:flex;align-items:center;gap:5px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+  .dot.open{background:var(--up)} .dot.closed{background:var(--down)}
+
+  /* ---------- Index strip ---------- */
+  .idx{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+  .idx::-webkit-scrollbar{display:none}
+  .idx a{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 11px;text-decoration:none;min-width:104px}
+  .idx .nm{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .idx .v{font-family:'Spline Sans Mono',monospace;font-size:14px;font-weight:600;margin-top:2px}
+  .idx .c{font-family:'Spline Sans Mono',monospace;font-size:11px}
+  .c.up{color:var(--up)} .c.down{color:var(--down)}
+
+  /* ---------- Hoy destacan ---------- */
+  .movers-head{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:10px 0 6px;color:var(--muted)}
+  .movers{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+  .movers::-webkit-scrollbar{display:none}
+  .mover{flex:0 0 auto;display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 5px 5px 12px;text-decoration:none}
+  .mover .s{font-family:'Spline Sans Mono',monospace;font-weight:600;font-size:13px}
+
+  /* ---------- Hoy en agenda ---------- */
+  .today{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--sun);border-radius:12px;padding:12px 16px;margin-top:10px}
+  .today .meta-line{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:6px}
+  .today .pri{font-size:14px;padding:3px 0;display:flex;gap:8px}
+  .today .pri::before{content:"◆";color:var(--sun);font-size:9px;line-height:2.1}
+
+  /* ---------- P&L card ---------- */
+  .pl-card{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin-top:10px;
+  }
+  .pl-card .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .pl-card .v{font-family:'Spline Sans Mono',monospace;font-size:16px;font-weight:600;margin-top:2px}
+  .pl-card .s{font-family:'Spline Sans Mono',monospace;font-size:11px}
+  .pl-card .v.up,.pl-card .s.up{color:var(--up)}
+  .pl-card .v.down,.pl-card .s.down{color:var(--down)}
+
+  /* per-row holdings line */
+  .hold{font-family:'Spline Sans Mono',monospace;font-size:10.5px;color:var(--muted);margin-top:3px}
+  .hold b{font-weight:600}
+  .hold b.up{color:var(--up)} .hold b.down{color:var(--down)}
+
+  /* earnings */
+  .ern{
+    font-family:'Spline Sans Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;
+    color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    vertical-align:2px;margin-left:6px;
+  }
+  .ecal{display:none;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+  .ecal.show{display:flex}
+  .ecal::-webkit-scrollbar{display:none}
+  .ecal a{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;font-family:'Spline Sans Mono',monospace;font-size:12px}
+  .ecal a b{font-weight:600}
+  .ecal a span{color:var(--muted);margin-left:6px}
+
+  /* ---------- Pills & badges ---------- */
+  .pill{
+    font-family:'Spline Sans Mono',monospace;font-size:12.5px;font-weight:600;
+    color:#fff;border-radius:7px;padding:3px 0;min-width:72px;text-align:center;display:inline-block;
+  }
+  .pill.up{background:var(--up)} .pill.down{background:var(--down)}
+  .pill.na{background:var(--bar);color:var(--muted)}
+  .tag{
+    font-family:'Spline Sans Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.1em;
+    color:var(--sun);border:1px solid var(--sun);border-radius:5px;padding:1px 5px;
+    vertical-align:2px;margin-left:7px;
+  }
+
+  /* ---------- Tabs ---------- */
+  .panel{display:none;padding-top:4px}
+  .panel.active{display:block}
+  nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    background:var(--nav);backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    display:flex;justify-content:space-around;
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  }
+  nav button{
+    background:none;border:none;cursor:pointer;color:var(--muted);
+    font-family:'Archivo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;
+    display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 18px;border-radius:10px;
+  }
+  nav button .ico{font-size:17px;line-height:1}
+  nav button.active{color:var(--sun)}
+  nav button:focus-visible{outline:2px solid var(--sun)}
+
+  /* ---------- Rows ---------- */
+  .sec-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+  .sec-label .n{font-family:'Spline Sans Mono',monospace;font-weight:400;letter-spacing:0}
+  .list{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .row{
+    display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;
+    padding:11px 14px 9px;text-decoration:none;border-bottom:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:none}
+  .row:active{background:var(--bg)}
+  .row .sym{font-family:'Spline Sans Mono',monospace;font-weight:600;font-size:15px}
+  .row .nm{font-size:12px;color:var(--muted);margin-top:1px}
+  .row .right{text-align:right}
+  .row .px{font-family:'Spline Sans Mono',monospace;font-size:15px;font-weight:600;min-height:20px}
+  .row .pill{margin-top:3px}
+  .meta{grid-column:1 / -1;display:flex;align-items:center;gap:10px;margin-top:5px;min-height:14px}
+  .range{flex:1;position:relative;height:4px;border-radius:2px;background:var(--bar)}
+  .range .pos{position:absolute;top:-3px;width:10px;height:10px;border-radius:50%;background:var(--sun);border:2px solid var(--card);transform:translateX(-50%)}
+  .y1{font-family:'Spline Sans Mono',monospace;font-size:11px;white-space:nowrap;color:var(--muted)}
+  .y1 b{font-weight:600}
+  .y1 b.up{color:var(--up)} .y1 b.down{color:var(--down)}
+  .rng-lbl{font-family:'Spline Sans Mono',monospace;font-size:10px;color:var(--muted)}
+
+  /* ---------- Prensa: brief + links ---------- */
+  .brief-card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--sun);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+  .brief-card .ch{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+  .brief-card .ch a{text-decoration:none}
+  .brief-card .tk{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--muted);margin:3px 0 6px}
+  .brief-card p{font-size:14px}
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:8px}
+  .news-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .news-card h3{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sun);margin-bottom:8px}
+  .news-card a{display:block;text-decoration:none;font-size:14px;padding:4px 0}
+  .news-card a:hover{color:var(--sun)}
+  .news-card a::before{content:"→ ";color:var(--muted)}
+  .headline{font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .headline:last-child{border-bottom:none}
+
+  /* ---------- Notas ---------- */
+  .note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:8px}
+  .note .d{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:3px}
+  .note p{font-size:14px}
+
+  .empty{
+    border:1px dashed var(--line);border-radius:12px;padding:16px;
+    font-size:13px;color:var(--muted);margin-top:8px;
+  }
+  .empty code{font-family:'Spline Sans Mono',monospace;font-size:12px}
+  .notice{margin-top:12px;font-size:13px;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
+  .notice code{font-family:'Spline Sans Mono',monospace;font-size:12px}
+  footer{margin-top:36px;font-size:11px;color:var(--muted);font-family:'Spline Sans Mono',monospace}
+
+  /* ---------- UX pass: loading skeletons ---------- */
+  .sk{display:inline-block;width:54px;height:13px;border-radius:4px;background:var(--bar);
+      animation:shimmer 1.4s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{opacity:.45}50%{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.sk{animation:none;opacity:.6}}
+
+  /* ---------- UX pass: carousels snap, links focusable ---------- */
+  .idx,.movers,.ecal{scroll-snap-type:x proximity;scroll-padding-left:4px}
+  .idx a,.mover,.ecal a{scroll-snap-align:start}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--sun);outline-offset:2px;border-radius:8px}
+
+  /* ---------- UX pass: touch targets ≥44px ---------- */
+  .idx a{min-height:48px}
+  .mover,.ecal a{min-height:36px;align-items:center;display:flex}
+  nav button{min-height:48px;min-width:64px}
+
+  /* freshness stamp */
+  .fresh{font-family:'Spline Sans Mono',monospace;font-size:9px;color:var(--muted)}
+
+  /* ---------- Aprende ---------- */
+  .learn-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+  .learn-card .cat{font-family:'Spline Sans Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.12em;color:var(--sun);text-transform:uppercase}
+  .learn-card h3{font-size:15px;font-weight:800;margin:4px 0 5px;letter-spacing:-.01em}
+  .learn-card p{font-size:14px;line-height:1.55}
+  .learn-card.extra{border-left:3px solid var(--sun)}
+
+  /* ---------- Desktop ≥900px: top nav + two-column groups ---------- */
+  @media (min-width:900px){
+    .wrap{max-width:1100px;padding:0 28px}
+    body{padding-top:64px;padding-bottom:32px}
+    nav{
+      top:0;bottom:auto;border-top:none;border-bottom:1px solid var(--line);
+      justify-content:flex-end;gap:6px;padding:6px 28px;
+    }
+    nav button{flex-direction:row;gap:7px;min-height:44px;padding:4px 16px}
+    nav button .ico{font-size:14px}
+    #groups{columns:2;column-gap:24px;margin-top:4px}
+    .group{break-inside:avoid;margin-bottom:4px}
+    .news-grid{grid-template-columns:repeat(3,1fr)}
+    #learn-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .learn-card{margin-bottom:0}
+    .pl-card .v{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<script>
+/* ==========================================================================
+   ✏️  CONFIG — THE ONLY BLOCK YOU (OR CLAUDE COWORK) EDIT
+   --------------------------------------------------------------------------
+   1. FINNHUB_KEY  → free key from https://finnhub.io (US prices, 52w, 1A)
+   2. OWNED        → symbols you hold. Any ticker here gets a CARTERA tag.
+   2b. P&L         → add sh (nº de títulos) y avg (coste medio en USD) to any
+                     Cartera item to activate the portfolio P&L card, e.g.
+                     {t:"GOOGL", n:"Alphabet", sh:10, avg:152.40},
+   3. LISTS        → the groups shown in Mercados. t=ticker, n=name,
+                     y=Yahoo symbol override, intl:true = link-only,
+                     crypto:"coingecko-id" = live without key.
+   4. BRIEF        → Claude Cowork rewrites this daily (YouTube + headlines).
+   5. NOTES        → Claude Cowork appends your daily ideas here.
+   ========================================================================== */
+const FINNHUB_KEY = ""; // ← paste your free key here
+
+const OWNED = ["GOOGL","MSFT","AMZN","UBER","OXY","YPF","BYDDF","NVO","KO",
+               "DPZ","SATS","MSTR","IAG.L","OHLA.MC","TRG.MC","BTC","ETH","DOT"];
+
+const LISTS = [
+  {name:"Cartera", items:[
+    {t:"GOOGL", n:"Alphabet"},        {t:"MSFT", n:"Microsoft"},
+    {t:"AMZN",  n:"Amazon"},          {t:"UBER", n:"Uber"},
+    {t:"OXY",   n:"Occidental"},      {t:"YPF",  n:"YPF"},
+    {t:"BYDDF", n:"BYD"},             {t:"NVO",  n:"Novo Nordisk"},
+    {t:"KO",    n:"Coca-Cola"},       {t:"DPZ",  n:"Domino's"},
+    {t:"SATS",  n:"EchoStar"},        {t:"MSTR", n:"Strategy"},
+    {t:"IAG.L",   n:"IAG", intl:true},
+    {t:"OHLA.MC", n:"OHLA", intl:true},
+    {t:"TRG.MC",  n:"Tubos Reunidos", intl:true},
+    {t:"BTC", n:"Bitcoin",  crypto:"bitcoin"},
+    {t:"ETH", n:"Ethereum", crypto:"ethereum"},
+    {t:"DOT", n:"Polkadot", crypto:"polkadot"},
+  ]},
+  {name:"AI Power & Data Centers", items:[
+    {t:"VST",n:"Vistra"},{t:"TLN",n:"Talen Energy"},{t:"CEG",n:"Constellation"},
+    {t:"NRG",n:"NRG Energy"},{t:"GEV",n:"GE Vernova"},{t:"PWR",n:"Quanta Services"},
+    {t:"ETN",n:"Eaton"},{t:"VRT",n:"Vertiv"},{t:"FIX",n:"Comfort Systems"},
+    {t:"SMR",n:"NuScale"},{t:"OKLO",n:"Oklo"},{t:"NNE",n:"Nano Nuclear"},
+    {t:"CCJ",n:"Cameco"},{t:"UEC",n:"Uranium Energy"},{t:"UUUU",n:"Energy Fuels"},
+    {t:"NFE",n:"New Fortress"},
+  ]},
+  {name:"Precious Metals", items:[
+    {t:"GLD",n:"SPDR Gold"},{t:"SLV",n:"iShares Silver"},{t:"GDX",n:"Gold Miners"},
+    {t:"XAU",n:"Oro spot", y:"XAUUSD=X", intl:true},
+    {t:"XAG",n:"Plata spot", y:"XAGUSD=X", intl:true},
+  ]},
+  {name:"Defense", items:[
+    {t:"RHM.DE",n:"Rheinmetall", intl:true},{t:"RTX",n:"RTX"},
+    {t:"LMT",n:"Lockheed Martin"},{t:"ITA",n:"iShares Aerospace"},
+  ]},
+  {name:"Semiconductors", items:[
+    {t:"NVDA",n:"Nvidia"},{t:"ASML",n:"ASML"},{t:"TSM",n:"TSMC"},{t:"AVGO",n:"Broadcom"},
+  ]},
+  {name:"Broad Index (UCITS)", items:[
+    {t:"CSPX",n:"iShares S&P 500", y:"CSPX.L", intl:true},
+    {t:"IWDA",n:"iShares MSCI World", y:"IWDA.L", intl:true},
+    {t:"VUSA",n:"Vanguard S&P 500", y:"VUSA.L", intl:true},
+  ]},
+];
+
+const INDEX_STRIP = [
+  {t:"SPY", n:"S&P 500"},
+  {t:"QQQ", n:"Nasdaq 100"},
+  {t:"GLD", n:"Oro"},
+  {t:"BTC", n:"Bitcoin", crypto:"bitcoin"},
+  {t:"EURUSD", n:"EUR/USD", fx:true},
+  {t:"IBEX", n:"IBEX 35", y:"%5EIBEX", linkOnly:true},
+];
+
+/* Channels Cowork scans daily for the brief. RSS = https://www.youtube.com/feeds/videos.xml?channel_id=ID */
+const YOUTUBE_CHANNELS = [
+  {name:"ZipTrader",           id:"UC0BGhWsIbV7Dm-lsvhdlMbA",
+   note:"IMPORTANTE: excluir siempre acciones patrocinadas/sponsored (segmentos pagados, 'paid promotion', tickers promocionados en la descripción). No incluirlas en el brief."},
+  {name:"El Arte de Invertir", id:"UC-yJ1V3fN75A4dlR6dgRgEg"},
+  {name:"Andrei Jikh",         id:"UCGy7SkBjcIAgTiwkXEtPnYg"},
+  {name:"Maxinomics",          id:"UCUEmaeh13ai1ivT5wzz5Lhg"},
+  {name:"Juan Ramón Rallo",    id:"UCBLCvUUCiSqBCEc-TqZ9rGw"},
+];
+
+/* Claude Cowork rewrites this every morning from your calendar + notes */
+const TODAY = {
+  date: "",            // ISO, e.g. "2026-06-12" — card hides if empty
+  firstMeeting: "",    // e.g. "9:30 — Comité de inversión"
+  meetings: 0,         // total events today
+  priorities: [],      // up to 3 strings, e.g. ["Cerrar informe Q2", ...]
+};
+
+/* Claude Cowork rewrites this object every morning */
+const BRIEF = {
+  date: "",          // e.g. "viernes 12 junio 2026"
+  youtube: [
+    // {channel:"Arte de Invertir", title:"Vídeo...", url:"https://...",
+    //  tickers:["NVDA","CCJ"], summary:"Recomendó... destacó..."}
+  ],
+  headlines: [
+    // "Titular 1 — fuente", "Titular 2 — fuente"
+  ],
+};
+
+/* Claude Cowork appends your ideas here (newest first) */
+const NOTES = [
+  // {d:"2026-06-12", text:"Investigar exposición de PWR a data centers en Texas."},
+];
+
+/* Optional: Cowork can add fresh píldoras here; shown first when d = today */
+const LEARN_EXTRA = [
+  // {d:"2026-06-12", cat:"Geopolítica", title:"...", body:"..."},
+];
+
+/* Banco de píldoras (semi-avanzado). Rotan 3 al día por fecha. Edita o amplía. */
+const LEARN_BANK = [
+ {cat:"Matemáticas", title:"Ley de Benford", body:"En datos reales no manipulados (facturas, poblaciones, magnitudes físicas) el primer dígito es 1 un 30,1% de las veces, no el 11% que esperarías. La frecuencia sigue log₁₀(1+1/d). Hacienda y los auditores forenses la usan para detectar contabilidades inventadas: los humanos fabrican dígitos demasiado uniformes."},
+ {cat:"Geografía", title:"Llívia, España dentro de Francia", body:"El Tratado de los Pirineos (1659) cedió a Francia 33 'villages' de la Cerdaña, pero Llívia tenía título de 'villa', no de pueblo — y se quedó fuera del trato. Resultado: un municipio gerundense completamente rodeado de territorio francés desde hace casi cuatro siglos, unido a Puigcerdà por una carretera 'neutral'."},
+ {cat:"Economía", title:"Ley de Goodhart", body:"«Cuando una medida se convierte en objetivo, deja de ser una buena medida.» Formulada por un asesor del Banco de Inglaterra en los 70. Explica desde bancos que maquillan ratios de capital hasta equipos que optimizan KPIs vacíos. Corolario para inversores: desconfía de métricas que la dirección de una empresa promete maximizar."},
+ {cat:"Ciencia", title:"Sesgo del superviviente: Abraham Wald", body:"En la 2ª Guerra Mundial, la USAAF quería blindar las zonas de los bombarderos que volvían más agujereadas. El estadístico Abraham Wald señaló lo contrario: hay que blindar donde NO hay agujeros — los aviones alcanzados ahí no volvían. El sesgo del superviviente distorsiona igual los rankings de fondos: solo ves los que no quebraron."},
+ {cat:"Historia", title:"El real de a ocho, primera divisa global", body:"La moneda de plata española acuñada desde 1497 circuló de Manila a Boston durante tres siglos; el símbolo $ probablemente deriva de su ceca. En EE. UU. fue de curso legal hasta 1857, y de su división en octavos ('pieces of eight') viene que Wall Street cotizara en fracciones de ⅛ hasta 1997."},
+ {cat:"Cultura", title:"Efecto Lindy", body:"Para lo no perecedero (ideas, tecnologías, libros), la esperanza de vida futura crece con la edad ya demostrada: lo que lleva 200 años en uso tiene más probabilidades de durar otros 200 que la novedad de ayer. Popularizado por Taleb, es un buen filtro mental para modas de inversión y stacks tecnológicos."},
+ {cat:"Matemáticas", title:"Paradoja de Simpson", body:"Una tendencia puede invertirse al agregar los datos. Caso clásico: Berkeley 1973 — globalmente las mujeres parecían discriminadas en admisiones, pero departamento a departamento eran admitidas en mayor proporción; simplemente aplicaban más a los departamentos competitivos. Moraleja: nunca leas un agregado sin preguntar cómo se compone."},
+ {cat:"Geografía", title:"El dilema de Malaca", body:"Por el estrecho de Malaca (2,8 km en su punto más angosto) pasa en torno a una cuarta parte del comercio marítimo mundial y la mayoría del crudo que importa China. Pekín llama 'dilema de Malaca' a esa vulnerabilidad: explica oleoductos por Myanmar, el corredor con Pakistán y media Franja y Ruta."},
+ {cat:"Política", title:"Ley de Duverger", body:"Los sistemas electorales mayoritarios a una vuelta (EE. UU., Reino Unido) tienden al bipartidismo: el voto útil castiga a terceros partidos hasta extinguirlos. La representación proporcional (España, Países Bajos) produce multipartidismo y coaliciones. Pocas 'leyes' de la ciencia política predicen tanto con tan poco."},
+ {cat:"Ciencia", title:"Síndrome de Kessler", body:"Propuesto por un científico de la NASA en 1978: a partir de cierta densidad de objetos en órbita baja, cada colisión genera fragmentos que provocan más colisiones — una cascada que podría inutilizar órbitas enteras durante generaciones. Con megaconstelaciones de miles de satélites, ha pasado de hipótesis a riesgo de negocio asegurable."},
+ {cat:"Historia", title:"La Escuela de Salamanca", body:"Teólogos españoles del XVI (Vitoria, Azpilcueta, Mariana) anticiparon ideas económicas modernas: Azpilcueta formuló una teoría cuantitativa del dinero al observar que la plata americana disparaba los precios en Sevilla antes que en el resto de Europa. Hayek los consideraba precursores de la economía de mercado."},
+ {cat:"Cultura", title:"Número de Dunbar", body:"El antropólogo Robin Dunbar halló correlación entre el tamaño del neocórtex de los primates y el de sus grupos sociales; extrapolado al humano da ~150 relaciones estables. Reaparece en tamaños de aldeas, compañías militares y startups: pasados ~150 empleados, la coordinación informal deja de funcionar y hace falta jerarquía."},
+ {cat:"Matemáticas", title:"Monty Hall", body:"Tres puertas, un coche, dos cabras. Eliges una; el presentador, que sabe dónde está el coche, abre otra con cabra y te ofrece cambiar. Cambiar gana 2/3 de las veces: tu elección inicial solo acertaba 1/3, y toda esa probabilidad restante se concentra en la puerta que queda. Hasta Paul Erdős se resistió a aceptarlo."},
+ {cat:"Geografía", title:"Punto Nemo", body:"El polo de inaccesibilidad oceánico, a ~2.688 km de la tierra firme más cercana, en el Pacífico Sur. Los humanos más próximos suelen ser los astronautas de la ISS al sobrevolarlo. Por eso las agencias espaciales lo usan como 'cementerio': allí cayó la Mir y allí se planea hundir la propia ISS."},
+ {cat:"Economía", title:"Enfermedad holandesa", body:"Un boom exportador de materias primas aprecia la divisa y asfixia al resto de la industria del país. El término nació con el gas neerlandés de los 60; explica trayectorias de Venezuela, Nigeria o Rusia. Noruega es el contraejemplo: esteriliza la renta petrolera en su fondo soberano para no romper su tipo de cambio."},
+ {cat:"Ciencia", title:"El puente del Milenio de Londres", body:"En su estreno (2000) osciló lateralmente tanto que cerró en dos días. No fue resonancia clásica: los peatones, para no caerse, sincronizaban el paso con el balanceo, amplificándolo — 'excitación lateral síncrona'. Es el ejemplo moderno favorito de los ingenieros sobre bucles de retroalimentación emergentes."},
+ {cat:"Historia", title:"El pánico de 1907 y la Fed", body:"Una maniobra fallida para acaparar acciones de United Copper desató retiradas masivas en los trusts de Nueva York. Sin banco central, fue J.P. Morgan en persona quien organizó el rescate, encerrando a los banqueros en su biblioteca. El susto convenció al Congreso: en 1913 nació la Reserva Federal."},
+ {cat:"Cultura", title:"Ley de Brandolini", body:"«La energía necesaria para refutar una tontería es un orden de magnitud mayor que la necesaria para producirla.» Formulada por un programador italiano en 2013, también se llama 'principio de asimetría de la basura informativa'. Explica por qué los desmentidos nunca alcanzan al bulo — y por qué conviene elegir bien las batallas."},
+ {cat:"Matemáticas", title:"Paradoja del cumpleaños", body:"En un grupo de solo 23 personas hay más del 50% de probabilidad de que dos compartan cumpleaños; con 70, supera el 99,9%. La intuición falla porque no comparas contigo, sino todos los pares posibles: 253 con 23 personas. Es la base de los 'birthday attacks' en criptografía contra funciones hash."},
+ {cat:"Geografía", title:"Baarle: la frontera más enrevesada de Europa", body:"Baarle-Hertog (Bélgica) son 22 enclaves dentro de Países Bajos, algunos con contraenclaves neerlandeses dentro. La frontera, herencia de tratados medievales entre señores feudales, atraviesa casas y cafés; la nacionalidad de cada vivienda la decide dónde cae su puerta principal — con impuestos y normativas distintas a cada lado."},
+ {cat:"Economía", title:"Dilema de Triffin", body:"El emisor de la moneda de reserva mundial debe suministrar liquidez al planeta — es decir, incurrir en déficits persistentes — lo que a la larga erosiona la confianza en esa misma moneda. Formulado en 1960 contra Bretton Woods, predijo su colapso (1971) y es el argumento de fondo en todo debate sobre la 'desdolarización'."},
+ {cat:"Ciencia", title:"Entropía de Shannon", body:"En 1948 Claude Shannon definió la información como reducción de incertidumbre, medible en bits, y demostró el límite teórico de compresión de cualquier mensaje. Toda la economía digital — del ZIP al 5G o los LLM — opera dentro de los márgenes que fijó aquel único artículo de Bell Labs."},
+ {cat:"Historia", title:"La VOC, primera cotizada de la historia", body:"La Compañía Neerlandesa de las Indias Orientales (1602) inventó a la vez la sociedad anónima moderna, la bolsa de valores (Ámsterdam) y, casi de inmediato, los derivados y las ventas en corto — prohibidas ya en 1610. En su pico valió más que varias de las mayores tecnológicas actuales juntas, ajustado a PIB."},
+ {cat:"Cultura", title:"La ventana de Overton", body:"El rango de políticas que el público considera 'aceptables' en cada momento. No se desplaza con argumentos moderados sino con posiciones extremas que hacen parecer razonable lo que ayer era radical. Entenderla permite leer estrategias políticas (y de mercado) como movimientos deliberados del marco, no del contenido."},
+ {cat:"Matemáticas", title:"Ley de Zipf", body:"En cualquier idioma, la palabra más frecuente aparece ~2 veces más que la segunda, 3 más que la tercera… La misma distribución rige tamaños de ciudades, visitas web o capitalizaciones bursátiles. Las distribuciones de ley de potencias no tienen 'término medio' representativo: la media engaña y los extremos dominan."},
+ {cat:"Geografía", title:"El canal de Panamá funciona con agua dulce", body:"Cada tránsito consume ~200 millones de litros del lago Gatún, alimentado por lluvia. En las sequías de 2023-24 el canal recortó los cruces diarios un 36%, disparando fletes globales. Una infraestructura clave del comercio mundial depende, literalmente, de que llueva en una cuenca tropical de 5.500 km²."},
+ {cat:"Economía", title:"Coste de Baumol", body:"Un cuarteto de cuerda tarda hoy lo mismo que en 1800 en tocar una pieza, pero sus músicos cobran salarios modernos: los sectores sin ganancias de productividad (sanidad, educación, justicia) encarecen inevitablemente respecto al resto. No es mala gestión: es aritmética. Clave para entender el gasto sanitario de cualquier país desarrollado."},
+ {cat:"Ciencia", title:"El problema de los tres cuerpos", body:"Dos cuerpos bajo gravedad tienen solución exacta; tres, en general, no — Poincaré lo demostró en 1889 y de paso fundó la teoría del caos: sensibilidad extrema a las condiciones iniciales. Por eso las trayectorias interplanetarias se calculan numéricamente y por eso el clima es predecible en días, no en meses."},
+ {cat:"Historia", title:"El 'Nixon shock' de 1971", body:"Un domingo por la noche, sin avisar a sus aliados, Nixon suspendió 'temporalmente' la convertibilidad del dólar en oro. La suspensión cumple 55 años: desde entonces todo el sistema monetario mundial es fiat puro, anclado solo en la confianza. El oro pasó de 35 $/onza a cotizar libre — contexto útil para cualquier debate sobre BTC."},
+ {cat:"Cultura", title:"Paradoja de Jevons", body:"En 1865 Jevons observó que las máquinas de vapor más eficientes no redujeron el consumo de carbón británico: lo multiplicaron, al abaratar su uso. La eficiencia expande la demanda. Hoy reaparece en los data centers: cada generación de chips más eficientes ha venido acompañada de más consumo eléctrico total, no menos."},
+ {cat:"Matemáticas", title:"Cuaterniones", body:"Hamilton los descubrió en 1843 y grabó las fórmulas a navaja en un puente de Dublín. Extienden los números complejos a 4 dimensiones y describen rotaciones 3D sin el 'gimbal lock' que sufren los ángulos de Euler. Cada videojuego, dron y nave espacial moderna orienta su cámara o fuselaje con ellos."},
+ {cat:"Geografía", title:"La paradoja de la línea de costa", body:"¿Cuánto mide la costa de España? Depende de la regla: cuanto más corta, más detalle captura y más larga sale la medición — sin converger a un valor. Richardson lo descubrió midiendo fronteras; Mandelbrot lo convirtió en el punto de partida de la geometría fractal. Por eso dos atlas serios dan cifras distintas."},
+ {cat:"Política", title:"Paradoja de Condorcet", body:"Con tres votantes y tres opciones, la mayoría puede preferir A sobre B, B sobre C y C sobre A: las preferencias colectivas pueden ser circulares aunque las individuales sean racionales. Arrow generalizó en 1951: ningún sistema de votación cumple a la vez todos los criterios deseables. Quien controla el orden de votación, controla el resultado."},
+ {cat:"Ciencia", title:"Efecto Mpemba", body:"En ciertas condiciones, el agua caliente se congela antes que la fría. Lo describió Aristóteles, lo redescubrió un estudiante tanzano en 1963 y sigue sin explicación consensuada (evaporación, convección, enlaces de hidrógeno…). Recordatorio sano: fenómenos cotidianos de física básica siguen abiertos en 2026."},
+ {cat:"Historia", title:"La tulipomanía fue más mito que crac", body:"La investigación moderna (Anne Goldgar, archivos de Ámsterdam) encontró pocos compradores reales, contratos que rara vez se ejecutaron y ninguna ola de quiebras en 1637. El relato de la 'primera burbuja' se infló en el siglo XIX con fines moralizantes. Útil recordarlo cuando se usa como analogía perezosa de cualquier activo."},
+ {cat:"Cultura", title:"Valla de Chesterton", body:"Si encuentras una valla en medio del campo y no entiendes para qué sirve, no la quites: averígualo primero. El principio de Chesterton (1929) es la heurística favorita de los ingenieros de software ante código legado — y de los inversores ante regulaciones o estructuras corporativas que parecen absurdas hasta que dejan de estarlo."},
+];
+
+const NEWS = [
+  {cat:"España · Mercados", links:[
+    ["Expansión Mercados","https://www.expansion.com/mercados.html"],
+    ["Cinco Días","https://cincodias.elpais.com/mercados-financieros/"],
+    ["El Economista","https://www.eleconomista.es/mercados-cotizaciones/"],
+    ["El Confidencial Mercados","https://www.elconfidencial.com/mercados/"],
+  ]},
+  {cat:"Global Markets", links:[
+    ["Bloomberg Markets","https://www.bloomberg.com/markets"],
+    ["Reuters Markets","https://www.reuters.com/markets/"],
+    ["Financial Times","https://www.ft.com/markets"],
+    ["Yahoo Finance","https://finance.yahoo.com/"],
+  ]},
+  {cat:"Energy · Nuclear · Uranium", links:[
+    ["OilPrice.com","https://oilprice.com/"],
+    ["World Nuclear News","https://www.world-nuclear-news.org/"],
+    ["NEI Magazine","https://www.neimagazine.com/"],
+    ["Uranium Price (Cameco)","https://www.cameco.com/invest/markets/uranium-price"],
+  ]},
+  {cat:"AI Infra · Semis · Big Tech", links:[
+    ["Data Center Dynamics","https://www.datacenterdynamics.com/en/"],
+    ["SemiAnalysis","https://semianalysis.com/"],
+    ["TechCrunch AI","https://techcrunch.com/category/artificial-intelligence/"],
+    ["The Information","https://www.theinformation.com/"],
+  ]},
+  {cat:"Defense · EVs · Pharma", links:[
+    ["Defense News","https://www.defensenews.com/"],
+    ["Electrek (EVs)","https://electrek.co/"],
+    ["CnEVPost (BYD)","https://cnevpost.com/"],
+    ["Fierce Pharma (GLP-1)","https://www.fiercepharma.com/"],
+  ]},
+  {cat:"Crypto · PE / Startups", links:[
+    ["CoinDesk","https://www.coindesk.com/"],
+    ["The Block","https://www.theblock.co/"],
+    ["TechCrunch Startups","https://techcrunch.com/category/startups/"],
+    ["PitchBook News","https://pitchbook.com/news"],
+  ]},
+];
+/* ======================== END OF CONFIG ================================ */
+</script>
+
+<div class="wrap">
+
+  <header>
+    <div class="brand">El Parte<small id="datestamp"></small></div>
+    <div class="clocks">
+      <span><span class="dot" id="dot-bme"></span>BME</span>
+      <span><span class="dot" id="dot-nyse"></span>NYSE</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ MERCADOS ============ -->
+    <section class="panel active" id="panel-mercados">
+      <div class="today" id="today" hidden>
+        <div class="meta-line" id="today-meta"></div>
+        <div id="today-pri"></div>
+      </div>
+      <div class="pl-card" id="pl-card" hidden>
+        <div><div class="k">Mi cartera</div><div class="v" id="pl-val">—</div><div class="s" id="pl-ccy"></div></div>
+        <div><div class="k">Hoy</div><div class="v" id="pl-day">—</div><div class="s" id="pl-day-pct"></div></div>
+        <div><div class="k">Total</div><div class="v" id="pl-tot">—</div><div class="s" id="pl-tot-pct"></div></div>
+      </div>
+      <div class="idx" id="idx"></div>
+      <div class="movers-head">Hoy destacan</div>
+      <div class="movers" id="movers"><span class="rng-lbl">cargando movimientos…</span></div>
+      <div class="movers-head" id="ecal-head" hidden>Próximos resultados</div>
+      <div class="ecal" id="ecal"></div>
+      <div id="groups"></div>
+      <div class="notice" id="key-notice" hidden>
+        Para precios en vivo, rango 52 sem. y tendencia 1A en valores de EE. UU., pega una clave gratuita de
+        <a href="https://finnhub.io" target="_blank" rel="noopener">finnhub.io</a> en <code>FINNHUB_KEY</code>.
+        Cripto y EUR/USD ya son en vivo. Cualquier fila abre Yahoo Finance.
+      </div>
+    </section>
+
+    <!-- ============ PRENSA ============ -->
+    <section class="panel" id="panel-prensa">
+      <div class="sec-label">Brief de YouTube <span class="n" id="brief-date"></span></div>
+      <div id="brief"></div>
+      <div class="sec-label">Titulares del día</div>
+      <div id="headlines"></div>
+      <div class="sec-label">Fuentes</div>
+      <div class="news-grid" id="news"></div>
+    </section>
+
+    <!-- ============ APRENDE ============ -->
+    <section class="panel" id="panel-aprende">
+      <div class="sec-label">Píldoras de hoy <span class="n" id="learn-date"></span></div>
+      <div id="learn-cards"></div>
+      <div class="hint" style="margin-top:10px">3 nuevas cada día, rotando entre matemáticas, geografía, economía, ciencia, historia y cultura. Cowork puede añadir píldoras frescas en <span style="font-family:'Spline Sans Mono',monospace">LEARN_EXTRA</span>.</div>
+    </section>
+
+    <!-- ============ NOTAS ============ -->
+    <section class="panel" id="panel-notas">
+      <div class="sec-label">Ideas & investigación</div>
+      <div id="notes"></div>
+    </section>
+
+    <footer>el-parte v7 · editado vía Claude Cowork · datos: CoinGecko / Finnhub / BCE · internacionales (.MC .L .DE) → Yahoo</footer>
+  </main>
+</div>
+
+<nav aria-label="Secciones">
+  <button data-tab="mercados" class="active"><span class="ico">◈</span>Mercados</button>
+  <button data-tab="prensa"><span class="ico">¶</span>Prensa</button>
+  <button data-tab="aprende"><span class="ico">∴</span>Aprende</button>
+  <button data-tab="notas"><span class="ico">✎</span>Notas</button>
+</nav>
+
+<script>
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const idOf = t => "r-" + t.replace(/[^A-Za-z0-9]/g,"_");
+const yahooURL = it => "https://finance.yahoo.com/quote/" + (it.y || encodeURIComponent(it.crypto ? it.t + "-USD" : it.t));
+const fmt = n => n >= 1000 ? n.toLocaleString("en-US",{maximumFractionDigits:0})
+                           : n.toLocaleString("en-US",{maximumFractionDigits:2});
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = {};                       // t -> {px, chg, lo, hi, y1}
+const ownedSet = new Set(OWNED);
+const ALL = LISTS.flatMap(l=>l.items);
+
+/* ---------- header: date & market dots ---------- */
+$("datestamp").textContent = " · " + new Date().toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"});
+function marketStatus(tz,oH,oM,cH,cM){
+  const p = new Intl.DateTimeFormat("en-GB",{timeZone:tz,hour:"2-digit",minute:"2-digit",weekday:"short",hour12:false}).formatToParts(new Date());
+  const g = t => p.find(x=>x.type===t).value;
+  const mins = (+g("hour"))*60 + (+g("minute"));
+  const weekend = ["Sat","Sun"].includes(g("weekday"));
+  return !weekend && mins >= oH*60+oM && mins < cH*60+cM;
+}
+$("dot-bme").classList.add(marketStatus("Europe/Madrid",9,0,17,30)?"open":"closed");
+$("dot-nyse").classList.add(marketStatus("America/New_York",9,30,16,0)?"open":"closed");
+
+/* ---------- tabs ---------- */
+document.querySelectorAll("nav button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("nav button").forEach(x=>{x.classList.remove("active");x.removeAttribute("aria-current");});
+    document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); b.setAttribute("aria-current","page");
+    $("panel-"+b.dataset.tab).classList.add("active");
+    window.scrollTo({top:0});
+  });
+});
+
+/* ---------- build merged Mercados list ---------- */
+function row(it){
+  const a=document.createElement("a");
+  a.className="row"; a.href=yahooURL(it); a.target="_blank"; a.rel="noopener"; a.id=idOf(it.t);
+  const tag = ownedSet.has(it.t) ? `<span class="tag">CARTERA</span>` : "";
+  a.innerHTML =
+    `<div><div class="sym">${it.t}${tag}</div><div class="nm">${it.n||""}</div></div>`+
+    `<div class="right"><div class="px" data-px>${it.intl?"":'<span class="sk"></span>'}</div>`+
+    `<span class="pill na" data-pill>${it.intl?"→ Yahoo":'<span class="sk" style="width:44px;height:10px"></span>'}</span>`+
+    `<div class="hold" data-hold hidden></div></div>`+
+    `<div class="meta" data-meta hidden>`+
+      `<span class="rng-lbl" data-lo></span>`+
+      `<div class="range"><div class="pos" data-pos></div></div>`+
+      `<span class="rng-lbl" data-hi></span>`+
+      `<span class="y1" data-y1></span>`+
+    `</div>`;
+  return a;
+}
+LISTS.forEach(gr=>{
+  const wrap=document.createElement("div"); wrap.className="group";
+  const lbl=document.createElement("div");
+  lbl.className="sec-label"; lbl.innerHTML=`${gr.name} <span class="n">${gr.items.length}</span>`;
+  wrap.appendChild(lbl);
+  const list=document.createElement("div"); list.className="list";
+  gr.items.forEach(it=>list.appendChild(row(it)));
+  wrap.appendChild(list);
+  $("groups").appendChild(wrap);
+});
+
+/* ---------- index strip ---------- */
+INDEX_STRIP.forEach(it=>{
+  const a=document.createElement("a");
+  a.href=yahooURL(it); a.target="_blank"; a.rel="noopener"; a.id="idx-"+it.t;
+  a.innerHTML=`<div class="nm">${it.n}</div><div class="v">${it.linkOnly?"→ Yahoo":'<span class="sk"></span>'}</div><div class="c"></div>`;
+  $("idx").appendChild(a);
+});
+/* freshness stamp: shows/updates when live data lands */
+let stampEl=null;
+function stamp(){
+  if(!stampEl){
+    stampEl=document.createElement("span"); stampEl.className="fresh";
+    document.querySelector(".clocks").appendChild(stampEl);
+  }
+  stampEl.textContent="act. "+new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});
+}
+
+/* ---------- Aprende: 3 píldoras/día rotando por fecha ---------- */
+(function(){
+  const now=new Date();
+  const start=new Date(now.getFullYear(),0,0);
+  const doy=Math.floor((now-start)/864e5);
+  $("learn-date").textContent=now.toLocaleDateString("es-ES",{day:"numeric",month:"short"});
+  const todayISO=now.toLocaleDateString("sv-SE");
+  const cards=[];
+  LEARN_EXTRA.filter(x=>x.d===todayISO).forEach(x=>cards.push({...x,extra:true}));
+  for(let k=0;k<3;k++) cards.push(LEARN_BANK[(doy*3+k)%LEARN_BANK.length]);
+  cards.forEach(c=>{
+    const d=document.createElement("div");
+    d.className="learn-card"+(c.extra?" extra":"");
+    d.innerHTML=`<div class="cat">${esc(c.cat)}</div><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p>`;
+    $("learn-cards").appendChild(d);
+  });
+})();
+function setIdx(t,v,chg){
+  const el=$("idx-"+t); if(!el) return;
+  el.querySelector(".v").textContent=fmt(v);
+  if(chg!=null){
+    const c=el.querySelector(".c");
+    c.textContent=(chg>=0?"+":"")+chg.toFixed(2)+"%";
+    c.className="c "+(chg>=0?"up":"down");
+  }
+}
+
+/* ---------- Hoy en agenda (written by Cowork) ---------- */
+if(TODAY.date && (TODAY.firstMeeting || TODAY.priorities.length)){
+  const todayISO = new Date().toLocaleDateString("sv-SE"); // YYYY-MM-DD local
+  const stale = TODAY.date !== todayISO ? " · ⚠ de otro día" : "";
+  const bits=[];
+  if(TODAY.firstMeeting) bits.push("primera: "+TODAY.firstMeeting);
+  if(TODAY.meetings) bits.push(TODAY.meetings+" eventos");
+  $("today-meta").textContent = "HOY EN AGENDA · " + bits.join(" · ") + stale;
+  TODAY.priorities.slice(0,3).forEach(p=>{
+    const d=document.createElement("div"); d.className="pri"; d.textContent=p;
+    $("today-pri").appendChild(d);
+  });
+  $("today").hidden=false;
+}
+
+/* ---------- Prensa: YouTube brief + headlines + sources ---------- */
+$("brief-date").textContent = BRIEF.date || "";
+if(BRIEF.youtube && BRIEF.youtube.length){
+  BRIEF.youtube.forEach(b=>{
+    const c=document.createElement("div"); c.className="brief-card";
+    c.innerHTML =
+      `<div class="ch">${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.channel)}</a>`:esc(b.channel)}</div>`+
+      (b.tickers&&b.tickers.length?`<div class="tk">${b.tickers.map(esc).join(" · ")}</div>`:"")+
+      `<p>${esc(b.summary||"")}</p>`;
+    $("brief").appendChild(c);
+  });
+}else{
+  $("brief").innerHTML =
+    `<div class="empty">Aún no hay brief. Programa una tarea diaria en Claude Cowork que revise tus canales
+     (<code>YOUTUBE_CHANNELS</code> en CONFIG), resuma recomendaciones y titulares, y reescriba el objeto
+     <code>BRIEF</code> de este archivo antes de hacer push.</div>`;
+}
+if(BRIEF.headlines && BRIEF.headlines.length){
+  BRIEF.headlines.forEach(t=>{
+    const d=document.createElement("div"); d.className="headline"; d.textContent=t;
+    $("headlines").appendChild(d);
+  });
+}else{
+  $("headlines").innerHTML=`<div class="empty">Cowork también puede escribir aquí 5 titulares de tus sectores cada mañana (<code>BRIEF.headlines</code>).</div>`;
+}
+NEWS.forEach(s=>{
+  const c=document.createElement("div"); c.className="news-card";
+  c.innerHTML=`<h3>${s.cat}</h3>`+s.links.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("");
+  $("news").appendChild(c);
+});
+
+/* ---------- Notas ---------- */
+if(NOTES.length){
+  NOTES.forEach(n=>{
+    const c=document.createElement("div"); c.className="note";
+    c.innerHTML=`<div class="d">${esc(n.d)}</div><p>${esc(n.text)}</p>`;
+    $("notes").appendChild(c);
+  });
+}else{
+  $("notes").innerHTML =
+    `<div class="empty">Vacío por ahora. Dile a Claude Cowork: «añade a mis notas de el-parte: investigar X»
+     y lo escribirá en <code>NOTES</code> (CONFIG) y hará push. Queda versionado en git — tu diario de research.</div>`;
+}
+
+/* ---------- update UI ---------- */
+function setQuote(t,px,chg){
+  store[t]={...(store[t]||{}),px,chg};
+  const el=$(idOf(t));
+  if(el){
+    el.querySelector("[data-px]").textContent=fmt(px);
+    const p=el.querySelector("[data-pill]");
+    p.textContent=(chg>=0?"+":"")+chg.toFixed(2)+"%";
+    p.className="pill "+(chg>=0?"up":"down");
+  }
+  renderMovers(); recomputePL(); stamp();
+}
+
+/* ---------- P&L (activates when Cartera items have sh & avg) ---------- */
+let eurusd = null; // USD per EUR
+function recomputePL(){
+  const pos = ALL.filter(i=>i.sh>0 && i.avg>0 && store[i.t] && store[i.t].px!=null);
+  if(!pos.length) return;
+  let val=0, day=0, cost=0;
+  pos.forEach(i=>{
+    const d=store[i.t], v=d.px*i.sh;
+    val+=v; cost+=i.avg*i.sh;
+    const prev=d.px/(1+(d.chg||0)/100);
+    day+=(d.px-prev)*i.sh;
+    /* per-row line */
+    const el=$(idOf(i.t));
+    if(el){
+      const h=el.querySelector("[data-hold]"); h.hidden=false;
+      const r=(d.px-i.avg)/i.avg*100, cls=r>=0?"up":"down";
+      h.innerHTML=`${i.sh} u · <b class="${cls}">${r>=0?"+":""}${r.toFixed(1)}%</b>`;
+    }
+  });
+  const tot=val-cost;
+  const toEUR = x => eurusd ? x/eurusd : x;
+  const sym = eurusd ? "€" : "$";
+  $("pl-card").hidden=false;
+  $("pl-val").textContent=sym+fmt(toEUR(val));
+  $("pl-ccy").textContent=eurusd?("$"+fmt(val)):"";
+  const dp=$("pl-day"); dp.textContent=(day>=0?"+":"−")+sym+fmt(Math.abs(toEUR(day)));
+  dp.className="v "+(day>=0?"up":"down");
+  const dpp=$("pl-day-pct"); dpp.textContent=(day>=0?"+":"")+(day/(val-day)*100).toFixed(2)+"%";
+  dpp.className="s "+(day>=0?"up":"down");
+  const tp=$("pl-tot"); tp.textContent=(tot>=0?"+":"−")+sym+fmt(Math.abs(toEUR(tot)));
+  tp.className="v "+(tot>=0?"up":"down");
+  const tpp=$("pl-tot-pct"); tpp.textContent=(tot>=0?"+":"")+(tot/cost*100).toFixed(1)+"%";
+  tpp.className="s "+(tot>=0?"up":"down");
+}
+
+/* ---------- earnings radar ---------- */
+const ecal=[]; // {t, date}
+function addEarnings(t,date){
+  if(ecal.some(e=>e.t===t)) return;
+  ecal.push({t,date});
+  ecal.sort((a,b)=>a.date.localeCompare(b.date));
+  const el=$(idOf(t));
+  const human=d=>new Date(d+"T12:00:00").toLocaleDateString("es-ES",{day:"numeric",month:"short"});
+  if(el && !el.querySelector(".ern")){
+    el.querySelector(".sym").insertAdjacentHTML("beforeend",`<span class="ern">📅 ${human(date)}</span>`);
+  }
+  $("ecal-head").hidden=false; $("ecal").classList.add("show");
+  $("ecal").innerHTML="";
+  ecal.forEach(e=>{
+    const a=document.createElement("a");
+    const it=[...ALL].find(i=>i.t===e.t)||{t:e.t};
+    a.href=yahooURL(it); a.target="_blank"; a.rel="noopener";
+    a.innerHTML=`<b>${e.t}</b><span>${human(e.date)}</span>`;
+    $("ecal").appendChild(a);
+  });
+}
+function setRange(t,lo,hi,y1){
+  store[t]={...(store[t]||{}),lo,hi,y1};
+  const el=$(idOf(t)); if(!el) return;
+  const m=el.querySelector("[data-meta]"); m.hidden=false;
+  const px=store[t].px;
+  if(lo!=null && hi!=null && px!=null && hi>lo){
+    el.querySelector("[data-lo]").textContent=fmt(lo);
+    el.querySelector("[data-hi]").textContent=fmt(hi);
+    const pct=Math.min(100,Math.max(0,(px-lo)/(hi-lo)*100));
+    el.querySelector("[data-pos]").style.left=pct+"%";
+  } else { el.querySelector(".range").style.display="none"; }
+  if(y1!=null){
+    el.querySelector("[data-y1]").innerHTML=
+      `1A <b class="${y1>=0?"up":"down"}">${y1>=0?"+":""}${y1.toFixed(1)}%</b>`;
+  }
+}
+function renderMovers(){
+  const all=Object.entries(store).filter(([,d])=>d.chg!=null)
+    .map(([t,d])=>({t,chg:d.chg})).sort((a,b)=>b.chg-a.chg);
+  if(!all.length) return;
+  const sig=all.filter(x=>Math.abs(x.chg)>=1.5);
+  if(!sig.length){
+    $("movers").innerHTML='<span class="rng-lbl">sin grandes movimientos (±1,5%) por ahora</span>';
+    return;
+  }
+  const pick=[...sig.slice(0,3),...sig.slice(-3)].filter((v,i,arr)=>arr.findIndex(x=>x.t===v.t)===i);
+  const find=t=>[...ALL,...INDEX_STRIP].find(i=>i.t===t)||{t};
+  $("movers").innerHTML="";
+  pick.forEach(({t,chg})=>{
+    const a=document.createElement("a"); a.className="mover";
+    a.href=yahooURL(find(t)); a.target="_blank"; a.rel="noopener";
+    a.innerHTML=`<span class="s">${t}</span><span class="pill ${chg>=0?"up":"down"}">${chg>=0?"+":""}${chg.toFixed(2)}%</span>`;
+    $("movers").appendChild(a);
+  });
+}
+
+/* ---------- data: queue (respects Finnhub 60 calls/min) ---------- */
+const q=[]; let running=false;
+function enqueue(fn){ q.push(fn); if(!running) runQ(); }
+async function runQ(){
+  running=true;
+  while(q.length){ try{ await q.shift()(); }catch(e){ console.warn(e); } await sleep(1100); }
+  running=false;
+}
+async function finnhub(path){
+  const r=await fetch(`https://finnhub.io/api/v1/${path}&token=${FINNHUB_KEY}`);
+  return r.json();
+}
+let keyErrorShown=false;
+function keyError(msg){
+  if(keyErrorShown) return; keyErrorShown=true;
+  const n=$("key-notice"); n.hidden=false;
+  n.innerHTML="⚠ "+msg+' Revisa <code>FINNHUB_KEY</code> en este archivo (clave gratuita en <a href="https://finnhub.io" target="_blank" rel="noopener">finnhub.io</a>).';
+}
+
+const usQuotable=[...ALL,...INDEX_STRIP].filter(i=>!i.crypto && !i.intl && !i.fx && !i.linkOnly);
+function loadUSQuotes(items){
+  items.forEach(it=>enqueue(async()=>{
+    const j=await finnhub(`quote?symbol=${it.t}`);
+    if(j&&j.error){ keyError("La API de Finnhub devolvió un error («"+j.error+"»)."); return; }
+    if(j&&j.c){ setQuote(it.t,j.c,j.dp??0); setIdx(it.t,j.c,j.dp??0); }
+  }));
+}
+
+if(FINNHUB_KEY){
+  /* portfolio first: owned quotes → all quotes → 52w/1A metrics */
+  const ordered=[...usQuotable].sort((a,b)=>(ownedSet.has(b.t)?1:0)-(ownedSet.has(a.t)?1:0));
+  loadUSQuotes(ordered);
+  ordered.forEach(it=>{
+    if(it.linkOnly||INDEX_STRIP.includes(it)) return;
+    enqueue(async()=>{
+      const j=await finnhub(`stock/metric?symbol=${it.t}&metric=all`);
+      const m=j&&j.metric;
+      if(m) setRange(it.t, m["52WeekLow"], m["52WeekHigh"], m["52WeekPriceReturnDaily"]);
+    });
+  });
+  /* earnings in the next 14 days */
+  const d=new Date(), to=new Date(Date.now()+14*864e5);
+  const iso=x=>x.toISOString().slice(0,10);
+  ordered.forEach(it=>{
+    if(it.linkOnly||INDEX_STRIP.includes(it)) return;
+    enqueue(async()=>{
+      const j=await finnhub(`calendar/earnings?from=${iso(d)}&to=${iso(to)}&symbol=${it.t}`);
+      const e=j&&j.earningsCalendar&&j.earningsCalendar[0];
+      if(e&&e.date) addEarnings(it.t,e.date);
+    });
+  });
+}else{
+  $("key-notice").hidden=false;
+  /* no key: stop skeleton shimmer, show static placeholders */
+  [...ALL,...INDEX_STRIP].filter(i=>!i.crypto && !i.intl && !i.fx && !i.linkOnly).forEach(it=>{
+    const el=$(idOf(it.t));
+    if(el){ el.querySelector("[data-px]").textContent="—";
+            const p=el.querySelector("[data-pill]"); p.textContent="→ Yahoo"; p.className="pill na"; }
+    const ix=$("idx-"+it.t);
+    if(ix) ix.querySelector(".v").textContent="—";
+  });
+}
+
+/* crypto: price + 24h + 1A, no key (CoinGecko) */
+async function loadCrypto(){
+  const cryptos=[...ALL,...INDEX_STRIP].filter(i=>i.crypto);
+  if(!cryptos.length) return;
+  try{
+    const ids=[...new Set(cryptos.map(i=>i.crypto))].join(",");
+    const r=await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&price_change_percentage=24h,1y`);
+    const j=await r.json();
+    if(!Array.isArray(j)) throw new Error("CoinGecko rate-limited");
+    j.forEach(c=>{
+      cryptos.forEach(i=>{
+        if(i.crypto!==c.id) return;
+        if(ALL.includes(i)){
+          setQuote(i.t, c.current_price, c.price_change_percentage_24h??0);
+          setRange(i.t, null, null, c.price_change_percentage_1y_in_currency);
+        }
+        setIdx(i.t, c.current_price, c.price_change_percentage_24h??0);
+      });
+    });
+  }catch(e){ console.warn("CoinGecko:",e); }
+}
+loadCrypto();
+
+/* failsafe: any skeleton still shimmering after 15s becomes a static dash */
+setTimeout(()=>{
+  document.querySelectorAll(".sk").forEach(s=>{ s.replaceWith(document.createTextNode("—")); });
+}, 15000);
+
+/* EUR/USD via ECB (frankfurter.app, no key) */
+async function loadFx(){
+  try{
+    const r=await fetch("https://api.frankfurter.app/latest?from=EUR&to=USD");
+    const j=await r.json();
+    if(j&&j.rates){ setIdx("EURUSD", j.rates.USD, null); eurusd=j.rates.USD; recomputePL(); }
+  }catch(e){ console.warn("FX:",e); }
+}
+loadFx();
+
+/* auto-refresh: every 5 min while visible; on return to the app after >10 min */
+let lastRefresh=Date.now();
+function refreshQuotes(){
+  lastRefresh=Date.now();
+  loadCrypto(); loadFx();
+  if(FINNHUB_KEY && !keyErrorShown)
+    loadUSQuotes(usQuotable.filter(i=>ownedSet.has(i.t)||INDEX_STRIP.includes(i)));
+}
+setInterval(()=>{ if(document.visibilityState==="visible") refreshQuotes(); }, 5*60*1000);
+document.addEventListener("visibilitychange",()=>{
+  if(document.visibilityState==="visible" && Date.now()-lastRefresh>10*60*1000) refreshQuotes();
+});
+</script>
+</body>
+</html>
